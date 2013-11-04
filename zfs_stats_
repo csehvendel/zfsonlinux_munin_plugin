@@ -23,23 +23,6 @@ SYS='/sbin/sysctl -n'
 # Sysctl macros
 #
 
-# getting the variables is very very slow on original linux port..........
-#
-# time cat /proc/spl/kstat/zfs/arcstats | grep "^hits" | awk '{print $3;}'
-#
-# real	0m0.008s
-# user	0m0.005s
-# sys	0m0.011s
-#
-# the scrapings
-#
-# time awk '/^hits/{print $3}' /proc/spl/kstat/zfs/arcstats
-#
-# real	0m0.003s
-# user	0m0.001s
-# sys	0m0.002s
-
-
 ARCSTAT="/proc/spl/kstat/zfs/arcstats"
 
 ARC_HITS=`awk '/^hits/{print $3}' $ARCSTAT`
